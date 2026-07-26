@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Akshay Kumar Gupta — Logistics &amp; Supply Chain Project Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1120;
+    --panel: #131B2E;
+    --panel-border: #223049;
+    --amber: #FF7A45;
+    --teal: #34D8C0;
+    --text: #EAF0FA;
+    --muted: #7C8AA5;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* subtle route-line background texture */
+  body::before{
+    content:"";
+    position: fixed;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(255,122,69,0.07), transparent 40%),
+      radial-gradient(circle at 88% 76%, rgba(52,216,192,0.06), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{ color: inherit; }
+  h1,h2,h3{ font-family: 'Space Grotesk', sans-serif; margin:0; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+
+  .wrap{ max-width: 920px; margin:0 auto; padding: 0 24px; position:relative; z-index:1; }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top:0; z-index:10;
+    background: rgba(11,17,32,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--panel-border);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 24px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:15px; letter-spacing:0.02em;
+  }
+  .brand .dot{ color: var(--amber); }
+  .navlinks{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; color: var(--muted); font-size:13px;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em;
+    transition: color .2s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{ color: var(--text); }
+  @media (max-width:640px){ .navlinks{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  header.hero{ padding: 64px 0 40px; }
+
+  .tracking-bar{
+    display:flex; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color: var(--muted);
+    border: 1px solid var(--panel-border);
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    margin-bottom: 28px;
+  }
+  .tracking-bar span{ white-space:nowrap; }
+  .tracking-bar .tag{
+    color: var(--teal);
+  }
+  .tracking-bar .pulse-wrap{ display:inline-flex; align-items:center; gap:6px; color: var(--amber); }
+  .pulse{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 0 rgba(255,122,69,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(255,122,69,0.5); }
+    70%{ box-shadow: 0 0 0 8px rgba(255,122,69,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(255,122,69,0); }
+  }
+
+  .hero h1{ font-size: clamp(34px, 6vw, 52px); font-weight:700; letter-spacing:-0.01em; }
+  .hero .role{
+    color: var(--muted);
+    font-size: clamp(15px, 2.4vw, 18px);
+    margin-top:10px;
+    font-weight:500;
+  }
+  .hero .role .sep{ color: var(--panel-border); margin: 0 8px; }
+  .hero p.summary{
+    max-width: 640px; margin-top:22px; color: var(--text); opacity:0.9;
+    font-size:15.5px;
+  }
+
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:12px;
+    margin-top: 26px;
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--panel-border);
+    background: var(--panel);
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size:13px;
+    text-decoration:none;
+    color: var(--text);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .chip:hover, .chip:focus-visible{ border-color: var(--teal); transform: translateY(-1px); }
+  .chip .ico{ color: var(--teal); font-size:12px; }
+
+  section{ padding: 56px 0; border-top: 1px solid var(--panel-border); }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--amber);
+    font-size:12px; letter-spacing:0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title{ font-size: clamp(22px,4vw,28px); font-weight:600; margin-bottom: 30px; }
+
+  /* ---------- Route timeline ---------- */
+  .route{ position:relative; padding-left: 34px; }
+  .route::before{
+    content:"";
+    position:absolute; left:9px; top:6px; bottom:6px;
+    width:2px;
+    background: repeating-linear-gradient(to bottom, var(--panel-border) 0 6px, transparent 6px 12px);
+  }
+  .stop{
+    position:relative;
+    padding-bottom: 34px;
+    opacity:0; transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .stop.visible{ opacity:1; transform:none; }
+  .stop:last-child{ padding-bottom:0; }
+  .stop .pin{
+    position:absolute; left: -34px; top:2px;
+    width:20px; height:20px; border-radius:50%;
+    background: var(--bg);
+    border: 2px solid var(--panel-border);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stop.current .pin{ border-color: var(--amber); }
+  .stop.current .pin::after{
+    content:""; width:8px; height:8px; border-radius:50%; background: var(--amber);
+    box-shadow: 0 0 0 0 rgba(255,122,69,0.6); animation: pulse 2s infinite;
+  }
+  .stop:not(.current) .pin::after{
+    content:""; width:8px; height:8px; border-radius:50%; background: var(--teal);
+  }
+  .stop-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px;
+    margin-bottom:4px;
+  }
+  .stop-head h3{ font-size:18px; font-weight:600; }
+  .stop-meta{ font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--muted); }
+  .status{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:0.06em; text-transform:uppercase;
+    padding: 3px 8px; border-radius: 4px;
+    border:1px solid var(--panel-border);
+  }
+  .status.done{ color: var(--teal); border-color: rgba(52,216,192,0.4); }
+  .status.active{ color: var(--amber); border-color: rgba(255,122,69,0.4); }
+  .company{ color: var(--muted); font-size:13.5px; margin-bottom: 8px; }
+  .stop ul{ margin: 8px 0 0; padding-left: 18px; }
+  .stop li{ font-size:14px; margin-bottom:5px; color: var(--text); opacity:0.9; }
+
+  /* ---------- Systems (skills) ---------- */
+  .systems-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;
+  }
+  @media (max-width:640px){ .systems-grid{ grid-template-columns: 1fr; } }
+  .sys-card{
+    background: var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 20px 20px 18px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .sys-card:hover{ border-color: var(--teal); transform: translateY(-2px); }
+  .sys-card .code{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--amber);
+    letter-spacing:0.1em; margin-bottom:8px; display:block;
+  }
+  .sys-card h4{ font-family:'Space Grotesk', sans-serif; font-size:16px; margin:0 0 8px; font-weight:600; }
+  .sys-card p{ margin:0; font-size:13.5px; color: var(--muted); }
+
+  /* ---------- Log (highlights) ---------- */
+  .log-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+  }
+  @media (max-width:820px){ .log-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:560px){ .log-grid{ grid-template-columns: 1fr; } }
+  .log-card{
+    background: var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+  .log-card .tagline{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--teal);
+    letter-spacing:0.08em; margin-bottom:10px; display:block;
+  }
+  .log-card h4{ font-size:14.5px; font-weight:600; margin:0 0 8px; }
+  .log-card p{ font-size:13px; color: var(--muted); margin:0; }
+
+  /* ---------- Credentials ---------- */
+  .cred{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding: 16px 0; border-bottom: 1px solid var(--panel-border);
+  }
+  .cred:last-child{ border-bottom:none; }
+  .cred h4{ font-size:15px; font-weight:600; }
+  .cred p{ margin: 4px 0 0; font-size:13px; color: var(--muted); max-width:520px; }
+  .cred .yr{ font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--muted); white-space:nowrap; }
+
+  /* ---------- Footer / contact ---------- */
+  footer{ padding: 60px 0 50px; text-align:center; }
+  footer .eyebrow{ text-align:center; }
+  footer h2{ font-size: clamp(24px,5vw,34px); margin-bottom:16px; }
+  footer p{ color: var(--muted); max-width: 460px; margin: 0 auto 26px; font-size:14.5px; }
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--amber); color:#0B1120; font-weight:600;
+    padding: 13px 26px; border-radius: 999px; text-decoration:none;
+    font-size:14px; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .cta:hover, .cta:focus-visible{ transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,122,69,0.25); }
+  footer .fine{ margin-top: 34px; font-size:12px; color: var(--panel-border); font-family:'IBM Plex Mono', monospace; }
+
+  :focus-visible{ outline: 2px solid var(--teal); outline-offset:2px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    .stop{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">AKG<span class="dot">.</span></div>
+    <ul class="navlinks">
+      <li><a href="#route">Route</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#log">Log</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="tracking-bar mono">
+      <span>TRACKING&nbsp;ID: <span class="tag">AKG-560037</span></span>
+      <span>ORIGIN: BENGALURU, KA</span>
+      <span class="pulse-wrap"><span class="pulse"></span> STATUS: OPEN TO OPPORTUNITIES</span>
+    </div>
+
+    <h1>Akshay Kumar Gupta</h1>
+    <div class="role">Logistics &amp; Supply Chain Project Manager <span class="sep">/</span> Data &amp; Operations Specialist</div>
+
+    <p class="summary">
+      Data-driven project manager with 11+ years moving client onboarding, supply chain integration,
+      and operational analytics from requirement to Control Tower. I've built the systems that track
+      shipments, drivers, and sales teams for enterprise clients like P&amp;G and IFB — using SQL,
+      Power BI, Python, and Metabase to turn raw operational data into decisions.
+    </p>
+
+    <div class="contact-row">
+      <a class="chip" href="mailto:akshaykumar.gupta342@yahoo.com"><span class="ico">&#9993;</span>akshaykumar.gupta342@yahoo.com</a>
+      <a class="chip" href="tel:+918553443547"><span class="ico">&#9742;</span>+91-8553443547</a>
+      <a class="chip" href="https://linkedin.com/in/akshay-gupta-496371b6" target="_blank" rel="noopener"><span class="ico">&#8599;</span>linkedin.com/in/akshay-gupta-496371b6</a>
+    </div>
+  </header>
+
+  <section id="route">
+    <div class="eyebrow">Career Route</div>
+    <h2 class="section-title">Eleven years, one continuous shipment</h2>
+
+    <div class="route">
+
+      <div class="stop current">
+        <div class="pin"></div>
+        <div class="stop-head">
+          <h3>Project Manager</h3>
+          <span class="status active">In transit</span>
+        </div>
+        <div class="company">Stackbox — Bengaluru, KA</div>
+        <div class="stop-meta">2023-05 → PRESENT · CLIENTS: P&amp;G, IFB</div>
+        <ul>
+          <li>Lead end-to-end client onboarding and BRD drafting to align business goals with technical delivery.</li>
+          <li>Architect salesman route optimization and driver track-and-trace for last-mile delivery.</li>
+          <li>Design real-time Control Tower dashboards in Metabase &amp; Power BI for full operational visibility.</li>
+        </ul>
+      </div>
+
+      <div class="stop">
+        <div class="pin"></div>
+        <div class="stop-head">
+          <h3>Project Associate</h3>
+          <span class="status done">Checkpoint cleared</span>
+        </div>
+        <div class="company">Stackbox — Bengaluru, KA</div>
+        <div class="stop-meta">2021-05 → 2023-05</div>
+        <ul>
+          <li>Supported client onboarding and requirement-gathering, translating needs into functional specs.</li>
+          <li>Built and maintained ETL workflows and recurring reports using SQL and Metabase.</li>
+        </ul>
+      </div>
+
+      <div class="stop">
+        <div class="pin"></div>
+        <div class="stop-head">
+          <h3>Business Analyst</h3>
+          <span class="status done">Checkpoint cleared</span>
+        </div>
+        <div class="company">Stackbox — Bengaluru, KA</div>
+        <div class="stop-meta">2019-05 → 2021-05</div>
+        <ul>
+          <li>Gathered and documented business requirements for early-stage logistics solutions.</li>
+          <li>Analyzed operational data and built foundational dashboards in Excel and SQL.</li>
+        </ul>
+      </div>
+
+      <div class="stop">
+        <div class="pin"></div>
+        <div class="stop-head">
+          <h3>Manager, Data Operations</h3>
+          <span class="status done">Checkpoint cleared</span>
+        </div>
+        <div class="company">Tracxn — Bengaluru, KA</div>
+        <div class="stop-meta">2015-06 → 2019-04</div>
+        <ul>
+          <li>Managed and mentored 12–15 data executives across daily operations and delivery standards.</li>
+          <li>Synthesized startup funding &amp; M&amp;A profiles into dashboards for venture capital clients.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="systems">
+    <div class="eyebrow">Core Systems</div>
+    <h2 class="section-title">What I run on</h2>
+    <div class="systems-grid">
+      <div class="sys-card">
+        <span class="code">SYS/01 · DOMAIN</span>
+        <h4>Logistics &amp; Operations</h4>
+        <p>Last-mile delivery, salesman route optimization, driver track &amp; trace, courier flow integration, Control Tower systems, cost management, BRD creation.</p>
+      </div>
+      <div class="sys-card">
+        <span class="code">SYS/02 · ANALYTICS</span>
+        <h4>Data &amp; Business Intelligence</h4>
+        <p>SQL, Power BI, Metabase, Python (NumPy, Pandas, SciPy), statistical modeling, dashboard building, custom reporting.</p>
+      </div>
+      <div class="sys-card">
+        <span class="code">SYS/03 · TOOLING</span>
+        <h4>Tools &amp; Databases</h4>
+        <p>PostgreSQL, TablePlus, in-house ETL tools, Postman, advanced Excel.</p>
+      </div>
+      <div class="sys-card">
+        <span class="code">SYS/04 · LEADERSHIP</span>
+        <h4>Process &amp; People</h4>
+        <p>Client onboarding &amp; relations, team management, KPI tracking, SOP development, cross-functional execution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="eyebrow">Shipment Log</div>
+    <h2 class="section-title">Recent deliverables</h2>
+    <div class="log-grid">
+      <div class="log-card">
+        <span class="tagline">RTM-01</span>
+        <h4>Route &amp; Delivery Optimization</h4>
+        <p>Cut market transit times and operational costs via salesman route and driver track-and-trace design.</p>
+      </div>
+      <div class="log-card">
+        <span class="tagline">ETL-02</span>
+        <h4>Courier Flow Integration</h4>
+        <p>End-to-end ETL pipelines and 3rd-party courier integrations for accurate real-time data sync.</p>
+      </div>
+      <div class="log-card">
+        <span class="tagline">CTL-03</span>
+        <h4>Control Tower &amp; Dashboards</h4>
+        <p>Real-time monitoring systems in Metabase &amp; Power BI for full driver and sales team visibility.</p>
+      </div>
+      <div class="log-card">
+        <span class="tagline">RPT-04</span>
+        <h4>Custom Reporting &amp; Automation</h4>
+        <p>Automated daily, monthly, and quarterly delivery and seller reports, cutting manual workload.</p>
+      </div>
+      <div class="log-card">
+        <span class="tagline">SOP-05</span>
+        <h4>Process Standardization</h4>
+        <p>Authored SOPs and oversaw image validation workflows across retail store formats.</p>
+      </div>
+      <div class="log-card">
+        <span class="tagline">ONB-06</span>
+        <h4>Client Onboarding &amp; BRDs</h4>
+        <p>Requirement gathering and BRD drafting that align client goals with technical delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="eyebrow">Credentials</div>
+    <h2 class="section-title">Manifest</h2>
+
+    <div class="cred">
+      <div>
+        <h4>Certification in Full Stack Data Science (Python)</h4>
+        <p>Capstone: Market Basket Analysis &amp; Product Sales Revenue Predictive Model using NumPy, Pandas, SciPy, Matplotlib, and Seaborn for cross-selling optimization.</p>
+      </div>
+    </div>
+    <div class="cred">
+      <div>
+        <h4>Bachelor of Technology, Computer Science &amp; Engineering</h4>
+        <p>WBUT, West Bengal</p>
+      </div>
+      <div class="yr">2010 → 2014</div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="eyebrow">Contact</div>
+    <h2>Ready to move your next shipment?</h2>
+    <p>Open to Project Manager and Logistics Data Analyst roles. Based in Bengaluru — happy to discuss remote or on-site.</p>
+    <a class="cta" href="mailto:akshaykumar.gupta342@yahoo.com">Send me a message →</a>
+    <div class="fine">LAST UPDATED · JUL 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  const stops = document.querySelectorAll('.stop');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.2 });
+  stops.forEach(s => io.observe(s));
+
+  // graceful fallback if IO unsupported
+  if(!('IntersectionObserver' in window)){
+    stops.forEach(s => s.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
